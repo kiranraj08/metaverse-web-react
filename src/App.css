@@ -1,0 +1,105 @@
+.topBar {
+  align-items: center;
+  border-bottom: 2px solid #333;
+  display: flex;
+  height: 98px;
+  justify-content: center;
+}
+.toggleButton {
+  margin: 1rem;
+}
+.iFrame {
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.leave {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  top: 2.5rem;
+}
+
+.next {
+  width: 24rem;
+  padding: 32px 14px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+}
+
+.nextdiv {
+  display: flex;
+  justify-content: center;
+}
+
+.nextdivheading {
+  color: black;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.buttondiv {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.buttondivcancel {
+  font-size: 1.25rem;
+  border: none;
+  background-color: white;
+}
+
+.buttondivleave {
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  background-color: white;
+}
+
+.buttonsvg {
+  font-weight: 700;
+  display: flex;
+  gap: 8px;
+  background-color: black;
+  opacity: 0.3;
+  padding: 8px 32px;
+  border-radius: 12px;
+  color: white;
+  position: absolute;
+  top: 32px;
+  left: 32px;
+}
+.herodivhome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.herobutton {
+  background-color: #1a102f;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 12px;
+  padding: 10px 25px;
+}
+
+.herobutton > a {
+  text-decoration: none;
+  color: white;
+}
+
+.herobutton > a:hover {
+  color: white;
+}
+
+.readyplayer {
+  width: 100%;
+  height: 100vh;
+}

@@ -1,0 +1,9 @@
+# Dependencies
+node_modules
+
+
+# packge lock file
+package-lock.json
+
+#build
+build
