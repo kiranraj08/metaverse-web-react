@@ -321,7 +321,7 @@ const ReactCanvas = (props) => {
     let light = createLights(scene);
     // let sky = createSkyBox(scene)
     let plain = CreateLand2();
-    let land1 = CreateLand1(scene);
+    // let land1 = CreateLand1(scene);
     // let video = VideoPlay(scene)
     let spacialSound = spacial(scene);
     let hrdaEnv = Hdra(scene);
@@ -330,7 +330,7 @@ const ReactCanvas = (props) => {
     camera = await followCamera;
     let new_plain = await plain;
     let new_light = await light;
-    let new_land1 = await land1;
+    // let new_land1 = await land1;
 
     // let newSky = await sky;
     // let newVideo = await video;
@@ -792,35 +792,41 @@ const ReactCanvas = (props) => {
     );
 
     hero.move = async function () {
-      let heroSpeed = 0.05;
+      let heroSpeed = 0.15;
       let heroSpeedBackwards = 0.025;
       let heroRotationSpeed = 0.1;
       const gravity = new BABYLON.Vector3(0, -0.2, 0);
       let curGroupAnim;
-
       let notifyServer = false;
       hero.state.notifyServer = false;
-
+      //   if (hero.position.y > 2) {
+      //     hero.moveWithCollisions(new BABYLON.Vector3(0, -2, 0));
+      //     notifyServer = true;
+      //   }
       if (isWPressed) {
         hero.rotation = new BABYLON.Vector3(0, -camera.alpha + 1.6, 0);
         const vec = hero.forward.scale(heroSpeed).add(gravity);
         hero.moveWithCollisions(vec);
         curGroupAnim = scene.animationGroups[0];
         curGroupAnim.play(true);
+        // scene.animationsEnabled= true
         notifyServer = true;
         hero.state.notifyServer = true;
       }
       if (isSPressed) {
-        hero.rotation = new BABYLON.Vector3(0, -camera.alpha - 1.4, 0);
+        // jumping?.start(true, 1.0, jumping._from, jumping._to, false);
+        // hero.rotation = new BABYLON.Vector3(0, -camera.alpha - 1.4, 0);
         const vec = hero.forward.scale(-heroSpeedBackwards).add(gravity);
         hero.moveWithCollisions(vec);
-        curGroupAnim = scene.animationGroups[3];
+        curGroupAnim = scene.animationGroups[0];
         curGroupAnim.play(true);
+        // scene.animationsEnabled= true
+        // BABYLON.SceneLoader.ImportAnimations("://raw.githhttpsubusercontent.com/Gopakumar9633/new/master/", "Anim01.glb", scene, false, BABYLON.SceneLoaderAnimationGroupLoadingMode.Clean, null);
         notifyServer = true;
         hero.state.notifyServer = true;
       }
       if (isAPressed) {
-        hero.rotation = new BABYLON.Vector3(0, -camera.alpha + 0.5, 0);
+        // hero.rotation = new BABYLON.Vector3(0, -camera.alpha + 0.5, 0);
         hero.state.r = -heroRotationSpeed;
         hero.rotate(BABYLON.Vector3.Up(), -heroRotationSpeed);
         hero.frontVector = new BABYLON.Vector3(
@@ -831,7 +837,7 @@ const ReactCanvas = (props) => {
         notifyServer = true;
       }
       if (isDPressed) {
-        hero.rotation = new BABYLON.Vector3(0, -camera.alpha - 3.5, 0);
+        // hero.rotation = new BABYLON.Vector3(0, -camera.alpha - 3.5, 0);
         hero.state.r = heroRotationSpeed;
         hero.rotate(BABYLON.Vector3.Up(), heroRotationSpeed);
         hero.frontVector = new BABYLON.Vector3(
@@ -842,12 +848,11 @@ const ReactCanvas = (props) => {
         notifyServer = true;
       }
       if (isBPressed) {
-        curGroupAnim = scene.animationGroups[4];
+        // curGroupAnim = scene.animationGroups[4];
         curGroupAnim.play(true);
         notifyServer = true;
         hero.state.notifyServer = true;
       }
-
       if (notifyServer) {
         hero.state.x = hero.position.x;
         hero.state.y = hero.position.y;
@@ -866,16 +871,24 @@ const ReactCanvas = (props) => {
         const curGroupAnim = scene.animationGroups[0];
         const curGroupAnim1 = scene.animationGroups[1];
         const curGroupAnim2 = scene.animationGroups[2];
-        const curGroupAnim3 = scene.animationGroups[3];
-        const curGroupAnim4 = scene.animationGroups[4];
+        // const curGroupAnim3 = scene.animationGroups[3];
+        // const curGroupAnim4 = scene.animationGroups[4];
         curGroupAnim?.stop();
         curGroupAnim2?.stop();
-        curGroupAnim3?.stop();
-        curGroupAnim4?.stop();
+        // curGroupAnim3?.stop();
+        // curGroupAnim4?.stop();
         curGroupAnim1?.play(true);
-        hero.rotation = new BABYLON.Vector3(0, -camera.alpha + 1.6, 0);
-
+        // hero.rotation = new BABYLON.Vector3(0, -camera.alpha + 1.6, 0);
+        // dancing?.stop();
+        // jumping?.stop();
+        // BABYLON.SceneLoader.ImportAnimations("assets/movements/", "idle.glb", scene, false, BABYLON.SceneLoaderAnimationGroupLoadingMode.Clean, null);
+        // idleAnim?.start(true, 1.0, idleAnim.from, idleAnim.to, false);
+        //Stop all animations besides Idle Anim when no key is down
+        // sambaAnim?.stop();
+        // walkAnim?.stop();
+        // walkBackAnim?.stop();
         hero.state.notifyServer = false;
+        // scene.animationsEnabled= false
       }
       socket.emit("IMoved", Game, hero.state);
     };
